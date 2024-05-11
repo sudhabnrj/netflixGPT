@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import {addUser, removeUser} from '../utils/userSlice';

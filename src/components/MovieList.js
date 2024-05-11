@@ -64,8 +64,8 @@ const MovieList = ({movies, title, poster_path}) => {
                 <Slider {...settings}>
                     {movies?.map((movie) => {
                         return(
-                          <Link to={"/watch/" + movie.id}>
-                            <MovieCard  key={movie.id} movieTitle={movie.title} posterPath={movie.poster_path}/>
+                          <Link key={movie.id} to={"/watch/" + movie.id}>
+                            <MovieCard   movieTitle={movie.title} posterPath={movie.poster_path}/>
                           </Link>
                         );
                     })}
