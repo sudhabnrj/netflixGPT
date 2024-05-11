@@ -29,6 +29,7 @@
 - Build Movie List and Movie card Component
 - Add TMDB CDN Image URL
 - Create Custom Hook for NowPlayingMovies & PopularMovies & UpcomingMovies
+- Create Movie Details Page
   
   
 
