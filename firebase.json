@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "build",
+    "site": "sudha-moviegpt",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

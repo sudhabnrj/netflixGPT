@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+header{
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 10%, transparent);
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
