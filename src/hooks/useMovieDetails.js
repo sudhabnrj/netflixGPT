@@ -19,7 +19,7 @@ const useMovieDetails = (movieID) => {
         };
         fetchMovie();
 
-    }, []);
+    }, [movieID, dispatch]);
 
     return movieDetails;
 

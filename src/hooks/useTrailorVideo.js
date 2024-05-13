@@ -28,7 +28,7 @@ const useTrailorVideo = (movieId) => {
 
       movieTrailor();
 
-    }, []);
+    }, [dispatch]);
 }
 
 export default useTrailorVideo;

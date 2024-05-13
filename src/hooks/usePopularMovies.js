@@ -26,7 +26,7 @@ const usePopularMovies = () => {
 
     popularMovies();
 
-  }, []);
+  }, [dispatch]);
 }
 
 export default usePopularMovies;

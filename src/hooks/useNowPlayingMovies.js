@@ -23,7 +23,7 @@ const useNowPlayingMovies = ()=> {
 
         nowPalyingMovie();
 
-    }, []);
+    }, [dispatch]);
 }
 
 export default useNowPlayingMovies;
