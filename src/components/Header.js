@@ -8,6 +8,7 @@ import { LOGO } from '../utils/constants';
 import GPTSearchBar from './GPTSearchBar';
 import { SUPPORTED_LANGUAGE } from '../utils/constants';
 import {changeLanguage} from '../utils/configSlice';
+import { Shimmer, Image } from 'react-shimmer'
 
 const Header = () => {
   
@@ -47,8 +48,10 @@ const Header = () => {
     <header className="absolute py-2 top-0 left-0 right-0 z-10">
       <div className="container mx-auto px-6 lg:px-0">
         <div className="flex justify-between items-center">
-          <Link to="/" className='w-2/12'>
-            <img src={LOGO} alt="Logo" className="w-[200px] " />
+          <Link to="/" className='w-2/12 logo'>
+            <Image src={LOGO} alt="Logo" 
+            fallback={<Shimmer width={150} height={40} />}
+            />
           </Link>
           {user &&
             <div className="flex justify-end items-center w-10/12">

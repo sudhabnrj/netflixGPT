@@ -7,3 +7,6 @@ header{
 .dropdown:hover .dropdown-menu {
     display: block;
 }
+.logo > img{
+    width: 150px;
+}
