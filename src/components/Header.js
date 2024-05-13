@@ -47,15 +47,16 @@ const Header = () => {
     <header className="absolute py-2 top-0 left-0 right-0 z-10">
       <div className="container mx-auto px-6 lg:px-0">
         <div className="flex justify-between items-center">
-          <Link href="/">
+          <Link to="/" className='w-2/12'>
             <img src={LOGO} alt="Logo" className="w-[200px] " />
           </Link>
           {user &&
-            <div className="flex justify-end items-center">
+            <div className="flex justify-end items-center w-10/12">
               <GPTSearchBar/>
               <select 
                 onChange={handleLanguageChange}
                 className="bg-slate-900 text-white rounded-sm py-1 px-2 border border-slate-800 outline-none ml-2">
+                  <option value="" disabled selected>Select Language</option>
                 {SUPPORTED_LANGUAGE.map((lang) => {
                   return (
                     <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
