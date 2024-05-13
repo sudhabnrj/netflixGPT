@@ -6,7 +6,7 @@ const useMovieDetails = (movieID) => {
 
     useEffect(()=> {
         fetchMovie();
-    }, []);
+    }, [movieID]);
 
     const fetchMovie = async () => {
         const data = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, API_OPTIONS);

@@ -37,7 +37,7 @@ const Header = () => {
       }
     });
     return () => unsubscribe();
-  }, []);
+  }, [dispatch, navigate]);
 
   const handleLanguageChange = (e)=>{
     dispatch(changeLanguage(e.target.value));

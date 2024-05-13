@@ -23,7 +23,7 @@ const useTrailorVideo = (movieId) => {
   
     useEffect(()=> {
         movieTrailor();
-    }, []);
+    }, [dispatch]);
 }
 
 export default useTrailorVideo;
