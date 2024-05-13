@@ -5,15 +5,21 @@ const useMovieDetails = (movieID) => {
     const [movieDetails, setMovieDetails] = useState(null);
 
     useEffect(()=> {
+        const fetchMovie = async () => {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, API_OPTIONS);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch movie details');
+                }
+                const json = await response.json();
+                setMovieDetails(json);
+            } catch (error) {
+                console.error('Error fetching movie details:', error);
+            }
+        };
         fetchMovie();
-    }, [movieID]);
 
-    const fetchMovie = async () => {
-        const data = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, API_OPTIONS);
-        const json = await data.json();
-        console.log(json);
-        setMovieDetails(json);
-    };
+    }, [movieID]);
 
     return movieDetails;
 
