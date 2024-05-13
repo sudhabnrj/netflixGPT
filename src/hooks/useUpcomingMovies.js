@@ -25,7 +25,7 @@ const useUpcomingMovies = () => {
 
         upcomingMovies();
 
-    }, [dispatch]);
+    }, []);
 }
 
 export default useUpcomingMovies;
