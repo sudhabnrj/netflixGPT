@@ -1,6 +1,8 @@
 import BgImage from '../assets/images/home-bg.jpg';
+import mainLogo from '../assets/images/Netflix_Logo_PMS.png';
 export const BgScreen = BgImage;
-export const LOGO = 'https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg';
+// export const LOGO = 'https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg';
+export const LOGO = mainLogo;
 export const USER_AVATAR = 'https://redux.js.org/img/redux.svg';
 export const BANNER_IMG_CDN_URL = "https://image.tmdb.org/t/p/original";
 export const API_OPTIONS = {
