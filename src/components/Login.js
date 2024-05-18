@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Header from './Header';
-import BgScreen from '../assets/images/home-bg.jpg'
+import {BgScreen} from '../utils/constants'
 import { Validate } from './../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
@@ -42,7 +42,7 @@ const Login = () => {
                   }).then(() => {
                     const {uid, displayName, email, photoURL} = auth.currentUser;
                     dispatch(addUser({uid: uid, displayName: displayName, email: email, photoURL: photoURL}));
-                    console.log(user);
+                    //console.log(user);
                   }).catch((error) => {
                     setIsErrorMsg(error.message);
                 });

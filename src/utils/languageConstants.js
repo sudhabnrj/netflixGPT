@@ -8,7 +8,7 @@ export const lang = {
       searchPlaceholder: 'आज आप क्या देखना पसंद करेंगे?'
     },
     spanish: {
-      spanish: 'Spanish',
+      search: 'Buscar',
       searchPlaceholder: '¿Qué te gustaría ver hoy?'
     }
 }

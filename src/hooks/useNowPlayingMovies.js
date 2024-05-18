@@ -13,7 +13,7 @@ const useNowPlayingMovies = ()=> {
                     throw new Error('Failed to fetch movie data.');
                 }
                 const json = await data.json();
-                console.log('Use Playing Movies Data', json.results);
+                //console.log('Use Playing Movies Data', json.results);
                 dispatch(addNowPlayingMovies(json.results));
             }
             catch(error){

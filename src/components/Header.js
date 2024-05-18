@@ -5,10 +5,12 @@ import {addUser, removeUser} from '../utils/userSlice';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate, Link } from 'react-router-dom';
 import { LOGO } from '../utils/constants';
-import GPTSearchBar from './GPTSearchBar';
+// import GPTSearchBar from './GPTSearchBar';
 import { SUPPORTED_LANGUAGE } from '../utils/constants';
 import {changeLanguage} from '../utils/configSlice';
 import { Shimmer, Image } from 'react-shimmer'
+// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { toggleDisplayGptSearch, clearMovieResults,setHomePage } from '../utils/gptSearchSlice';
 
 const Header = () => {
   
@@ -16,6 +18,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const user = useSelector((store)=> store.user);
+  const showGptSearch = useSelector((store)=> store.gptSearch.showGptSearch);
+  const movieResult = useSelector((store)=> store.movies.movieInfo);
 
   const dispatch = useDispatch();
 
@@ -31,7 +35,10 @@ const Header = () => {
         const {uid, email, displayName, photoURL} = user;
         dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
         //console.log(addUser({uid: uid, email: email}));
-        navigate('/browse');
+        if(window.location.pathname === '/'){
+          navigate('/browse');
+          console.log(window.location.pathname);
+        }
       } else {
         dispatch(removeUser());
         navigate('/');
@@ -44,28 +51,39 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
 
+  const handleSearchToggle = () => {
+    if(showGptSearch === false){
+      dispatch(clearMovieResults());
+    }
+    dispatch(toggleDisplayGptSearch());
+    //setIsToggle(!isToggle);
+  };
+
     return(
-    <header className="absolute py-2 top-0 left-0 right-0 z-10">
+    <header className="absolute py-2 top-0 left-0 right-0 z-30">
       <div className="container mx-auto px-6 lg:px-0">
         <div className="flex justify-between items-center">
-          <Link to="/" className='w-2/12 logo'>
+          <Link to="/browse" className='w-2/12 logo' onClick={
+            () => {dispatch(setHomePage(false));}
+          }>
             <Image src={LOGO} alt="Logo" 
-            fallback={<Shimmer width={150} height={40} />}
+              fallback={<Shimmer width={150} height={40} />}
             />
           </Link>
           {user &&
-            <div className="flex justify-end items-center w-10/12">
-              <GPTSearchBar/>
-              <select 
-                onChange={handleLanguageChange}
-                className="bg-slate-900 text-white rounded-sm py-1 px-2 border border-slate-800 outline-none ml-2">
-                  <option value="" disabled selected>Select Language</option>
-                {SUPPORTED_LANGUAGE.map((lang) => {
-                  return (
-                    <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
-                  )
-                })}
-              </select>
+            <div className="flex justify-end items-center w-10/12 relative">
+              {showGptSearch && (<select 
+                  onChange={handleLanguageChange}
+                  className="bg-slate-900 text-white rounded-sm py-1 px-2 border border-slate-800 outline-none ml-2">
+                  {SUPPORTED_LANGUAGE.map((lang) => {
+                    return (
+                      <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+                    )
+                  })}
+                </select>)}
+                <button onClick={handleSearchToggle} className="bg-red-700 rounded-sm py-2 px-4 text-white ml-2 font-semibold">
+                  {!showGptSearch ? 'GPT Search' : 'Go to Home'}
+                </button>
               <div className="dropdown relative inline-block text-left ml-4">
                 <p className="flex justify-start items-center">
                   <img className="rounded-md w-8 h-8" src={user?.photoURL} alt="user" />

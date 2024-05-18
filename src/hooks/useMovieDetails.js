@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { API_OPTIONS } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import {addMovieInfo} from '../utils/movieSlice'
+
 const useMovieDetails = (movieID) => {
 
-    const [movieDetails, setMovieDetails] = useState(null);
+    const dispatch = useDispatch();
+
+    const fetchMovieInfo = async ()=> {
+        try{
+            const data = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, API_OPTIONS);
+            const json = await data.json();
+            dispatch(addMovieInfo(json));
+        }
+        catch(error){
+            console.error('Error fetching movie details:', error);
+        }        
+
+    };
 
     useEffect(()=> {
-        const fetchMovie = async () => {
-            try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movieID}?language=en-US`, API_OPTIONS);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch movie details');
-                }
-                const json = await response.json();
-                setMovieDetails(json);
-            } catch (error) {
-                console.error('Error fetching movie details:', error);
-            }
-        };
-        fetchMovie();
-
-    }, [movieID]);
-
-    return movieDetails;
+        fetchMovieInfo();
+    }, []);
 
 }
 export default useMovieDetails;

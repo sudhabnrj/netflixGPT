@@ -30,6 +30,7 @@
 - Add TMDB CDN Image URL
 - Create Custom Hook for NowPlayingMovies & PopularMovies & UpcomingMovies
 - Create Movie Details Page
+- Multi Language Search Bar
   
   
 
