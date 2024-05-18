@@ -21,7 +21,7 @@ const useMoreVideos = (movieID) => {
     };
     useEffect(()=> {
         fetchVideos();
-    }, []);
+    }, [movieID, dispatch]);
 }
 
 export default useMoreVideos

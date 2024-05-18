@@ -21,7 +21,7 @@ const useMovieDetails = (movieID) => {
 
     useEffect(()=> {
         fetchMovieInfo();
-    }, []);
+    }, [movieID, dispatch]);
 
 }
 export default useMovieDetails;

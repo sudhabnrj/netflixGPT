@@ -21,7 +21,7 @@ const UseMovieCast = (movieID) => {
 
     useEffect(()=> {
         fetchMovieCast();
-    }, []);
+    }, [movieID, dispatch]);
 };
 
 export default UseMovieCast;

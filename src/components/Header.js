@@ -19,7 +19,7 @@ const Header = () => {
 
   const user = useSelector((store)=> store.user);
   const showGptSearch = useSelector((store)=> store.gptSearch.showGptSearch);
-  const movieResult = useSelector((store)=> store.movies.movieInfo);
+  //const movieResult = useSelector((store)=> store.movies.movieInfo);
 
   const dispatch = useDispatch();
 
