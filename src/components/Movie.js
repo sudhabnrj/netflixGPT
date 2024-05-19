@@ -13,6 +13,7 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import useTrailorVideo from '../hooks/useTrailorVideo';
 import YouTubeEmbed from './YouTubeEmbed';
 import MoreVideos from './MoreVideos';
+import RecommendedMovie from './RecommendedMovie';
 
 const Movie = () => {
     const movieResult = useSelector((store)=> store.movies.movieInfo);
@@ -107,6 +108,7 @@ const Movie = () => {
                 </div>
                 <MoreVideos/>
                 <MovieCastList/>
+                <RecommendedMovie/>
                 
             </main>
             {isOpen && 

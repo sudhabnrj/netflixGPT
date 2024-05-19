@@ -48,34 +48,48 @@ const MoreVideos = () => {
       };
 
   return (
-    <div className="bg-slate-800 py-8">
-        <div className="w-full">
+    <>
+    {allVideos && allVideos.length > 0 ? (
+      <div className="bg-slate-800 py-8">
+        <div className="w-full">          
             <div className="container mx-auto">
-                <h2 className="text-white font-bold md:text-3xl text-xl mb-8">More Videos</h2>
+                <h2 className="text-white font-bold md:text-3xl text-xl mb-8">More Videos ({allVideos.length})</h2>
             </div>
             <>
                 <Slider {...settings}>
                     {allVideos?.map((video, index)=> {
                         return(
                             <div key={index} className="m-2">
-                                <iframe
+                              <img alt={video.name} src={`https://img.youtube.com/vi/${video?.key}/hqdefault.jpg`} />
+                                {/* <iframe
                                     className="aspect-video md:w-[500px] md:h-[315px]"
                                     src={
                                     "https://www.youtube-nocookie.com/embed/" + video?.key
                                     }
                                     title="YouTube video player"
-                                    frameborder="0"
+                                    frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                                    allowfullscreen
+                                    allowFullScreen
                                     loading="lazy"
-                                ></iframe>
+                                ></iframe> */}
                             </div>
                         );
                     })}
                 </Slider>
-            </>
+            </>          
         </div>
-    </div>
+      </div>): (
+        <div className="bg-slate-800 py-8">
+            <div className="w-full">
+                <div className="container mx-auto">
+                    <h2 className="text-white font-bold md:text-3xl text-xl mb-8">
+                        No Videos Available
+                    </h2>
+                </div>
+            </div>
+        </div>
+      )}
+    </>
   )
 }
 

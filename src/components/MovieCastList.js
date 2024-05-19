@@ -61,7 +61,7 @@ const MovieCastList = () => {
     <div className="bg-slate-900 py-8">
       <div className="w-full">
         <div className="container mx-auto">
-          <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Cast</h2>
+          <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Cast ({castInfo.cast.length})</h2>
         </div>
         <Slider {...settings}>
           {castInfo?.cast.map((cast)=>
@@ -74,7 +74,7 @@ const MovieCastList = () => {
 
       <div className="w-full mt-8">
         <div className="container mx-auto">
-          <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Crew</h2>
+          <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Crew ({castInfo.crew.length})</h2>
         </div>
         <Slider {...settings}>
           {castInfo?.crew.map((cast)=>
