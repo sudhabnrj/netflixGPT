@@ -20,7 +20,7 @@ const gptSearch = createSlice({
         },
         setHomePage: (state)=> {
             state.showGptSearch = false;
-        }
+        },
     }
 });
 

@@ -18,7 +18,7 @@ const Browse = () => {
   // const gptMovies = useSelector((store)=> store.gptSearch.gptMovies);
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Header/>
       {showGptSearch ? <GPTSearchPage/> : 
         <>

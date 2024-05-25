@@ -9,10 +9,10 @@ import NextArrow from './NextArow';
 import PrevArrow from './PrevArrow';
 import Shimmer from './Shimmer';
 
-const MovieCastList = () => {
-  const {movieID} = useParams();
-  UseCast(movieID);
-  const castInfo = useSelector((store)=> store.movies?.movieCast);
+const TvCastList = () => {
+  const {tvSeriesID} = useParams();
+  UseCast(null, tvSeriesID);
+  const castInfo = useSelector((store)=> store.tvshows?.tvShowCast);
 
   if (castInfo === null){
     return(
@@ -77,20 +77,31 @@ const MovieCastList = () => {
         </Slider>
       </div>
 
-      <div className="w-full mt-8">
-        <div className="container mx-auto px-6 lg:px-0">
-          <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Crew ({castInfo.crew.length})</h2>
-        </div>
-        <Slider {...settings}>
-          {castInfo?.crew.map((cast)=>(
-              <CastCard key={cast.id} originalName={cast?.name} characterName={cast?.character} src={cast?.profile_path}/>
+        {castInfo.crew.length > 0 ?(
+            <div className="w-full mt-8">
+                <div className="container mx-auto px-6 lg:px-0">
+                <h2 className="text-white font-bold md:text-3xl text-xl mb-8">Crew ({castInfo.crew.length})</h2>
+                </div>
+                <Slider {...settings}>
+                {castInfo?.crew.map((cast)=>(
+                    <CastCard key={cast.id} originalName={cast?.name} characterName={cast?.character} src={cast?.profile_path}/>
+                    )
+                )}
+                </Slider>
+            </div>
+            ) : (
+                <div className="w-full mt-8">
+                    <div className="container mx-auto">
+                        <h2 className="text-white font-bold md:text-3xl text-xl mb-8">
+                            No Crew Available
+                        </h2>
+                    </div>
+                </div>
             )
-          )}
-        </Slider>
-      </div>
+        }
 
     </div>
   )
 }
 
-export default MovieCastList;
+export default TvCastList;

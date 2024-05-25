@@ -30,7 +30,10 @@
 - Add TMDB CDN Image URL
 - Create Custom Hook for NowPlayingMovies & PopularMovies & UpcomingMovies
 - Create Movie Details Page
-- Multi Language Search Bar
+- Create Tv and Tv Details Page
+- Added fitre fintionalities for movies and tv shows.
+- Added Recomended videos for movies and tv shows
+- Added Cast and Crew for movies and tv shows
   
   
 

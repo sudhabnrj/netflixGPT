@@ -30,14 +30,14 @@ const Search = () => {
   }
 
   return (
-    <div className="pt-[5%] flex justify-center">
-      <form onSubmit={(e) => e.preventDefault() } className=" bg-black bg-opacity-80 w-1/3 grid grid-cols-12 p-4 ">
+    <div className="2xl:pt-[5%] sm:pt-[15%] pt-[30%] flex justify-center">
+      <form onSubmit={(e) => e.preventDefault() } className=" bg-black bg-opacity-80 w-[92%] sm:w-[70%] 2xl:w-1/3 grid grid-cols-12 p-4 ">
         <input type="text" 
           ref={searchText}
-          className="text-black  outline-none px-4 pr-10 py-3 bg-white transition-all col-span-10" 
+          className="text-black  outline-none px-4 pr-10 py-3 bg-white transition-all col-span-8 lg:col-span-10" 
           placeholder={lang[langKey].searchPlaceholder} 
         />
-        <button  className="col-span-2 bg-red-700 py-1 px-2 text-white text-xl font-medium" onClick={handleGTPSearch}>{lang[langKey].search}</button>
+        <button  className="col-span-4 lg:col-span-2 bg-red-700 py-1 px-2 text-white text-xl font-medium" onClick={handleGTPSearch}>{lang[langKey].search}</button>
       </form>
     </div>
   );
