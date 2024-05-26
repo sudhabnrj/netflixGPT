@@ -34,17 +34,7 @@ const TvShow = () => {
       );
   };
 
-  const {backdrop_path, poster_path, original_name, genres, overview, tagline, vote_average} = tvShowResult;
-
-//   const toHoursAndMinutes = (totalMinutes) => {
-//         const hour = Math.floor(totalMinutes / 60);
-//         const minutes = totalMinutes % 60;
-//         if(hour > 0){
-//             return `${hour}h ${minutes}m`;
-//         }else{
-//             return `${minutes}m`;
-//         }
-//     };
+    const {backdrop_path, poster_path, original_name, genres, overview, tagline, vote_average} = tvShowResult;
     const percentage = Math.round(parseFloat((vote_average) / 10 * 100));
 
     const openModal = () => setIsOpen(true);
