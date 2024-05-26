@@ -33,5 +33,5 @@ export const SUPPORTED_LANGUAGE = [
     name: 'Spanish'
   }
 ]
-
+export const FIREBASE_AUTH=process.env.REACT_APP_FIREBASE_AUTH_KEY
 // export const GPT_KEY = process.env.REACT_APP_GPT_KEY;
