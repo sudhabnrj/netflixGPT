@@ -5,7 +5,7 @@ import LoadingImg from './LoadingImg';
 
 const CastCard = ({ originalName, characterName, src }) => {
   return (
-    <div className="cursor-pointer rounded-md h-full w-40 relative shadow-lg">
+    <div className="rounded-md h-full w-40 relative shadow-lg">
       <div className=" rounded-md movie-result h-[240px]">
         <LoadingImg className={`posterImg w-full h-full object-cover object-center`} src={src ? BANNER_IMG_CDN_URL + src : USER_AVATAR} alt={originalName} />
       </div>

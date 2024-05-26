@@ -49,7 +49,7 @@ const AllTvShows = () => {
         <>
             <Header/>
             <main className="relative">
-                <div className="w-full bg-slate-900 min-h-screnn">
+                <div className="w-full bg-slate-900 min-h-[700px]">
                 <div className="container mx-auto px-6 lg:px-0">
                     <div className="pt-40 pb-10 flex justify-between items-center sm:flex-row flex-col">
                         <h1 className="text-white text-2xl font-bold">Explore Tv Shows</h1>
