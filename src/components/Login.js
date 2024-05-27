@@ -11,8 +11,9 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
-    const [isErrorMsg, setIsErrorMsg] = useState(null);
+    const [isErrorMsg, setIsErrorMsg] = useState([]);
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const [passwordHints, setPasswordHints] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -25,11 +26,11 @@ const Login = () => {
     };
 
     const handleValidateForm = ()=> {
-        const message = Validate( email.current.value, password.current.value);
-        setIsErrorMsg(message);
+        const messages = Validate( email.current.value, password.current.value);
+        setIsErrorMsg(messages);
         //console.log(message);
 
-        if(message) return;
+        if (messages.length > 0) return;
         
         if(!isSignInForm){
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -44,14 +45,14 @@ const Login = () => {
                     dispatch(addUser({uid: uid, displayName: displayName, email: email, photoURL: photoURL}));
                     //console.log(user);
                   }).catch((error) => {
-                    setIsErrorMsg(error.message);
+                    setIsErrorMsg([error.message]);
                 });
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 //console.log(errorCode + errorMessage);
-                setIsErrorMsg(errorCode + errorMessage);
+                setIsErrorMsg([errorCode + errorMessage]);
             });
         }else{
             signInWithEmailAndPassword(auth, email.current.value, password.current.value)
@@ -64,9 +65,14 @@ const Login = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                setIsErrorMsg(errorCode + errorMessage);
+                setIsErrorMsg([errorCode + errorMessage]);
             });
         }
+    };
+
+    const handlePasswordHints = () => {
+        const hints = Validate(email.current.value, password.current.value);  // Corrected typo
+        setPasswordHints(hints);
     };
 
     const handleShowPassword = () => {
@@ -97,6 +103,7 @@ const Login = () => {
                     type={!isShowPassword ? 'password' : 'text'}
                     name="password" placeholder="Password"
                     ref={password}
+                    onChange={handlePasswordHints}
                     className="bg-slate-900 bg-opacity-60 w-full p-4 mb-4 rounded-md text-white placeholder:text-slate-400 border border-gray-500 pr-12" 
                     />
                     <span className="text-white absolute right-4 top-2 cursor-pointer rounded-full w-10 h-10 flex justify-center items-center hover:bg-black hover:bg-opacity-70 p-2" onClick={handleShowPassword}>
@@ -104,7 +111,18 @@ const Login = () => {
                         
                     </span>
                 </div>
-                <p className="text-red-500 font-medium mb-4">{isErrorMsg}</p>
+                <ul className="text-slate-800 bg-yellow-500 rounded-md font-medium mb-4">
+                    {isErrorMsg.map((msg, index) => (
+                        <li className="px-2 font-sm" key={index}>{msg}</li>
+                    ))}
+                </ul>
+                <ul className="text-slate-800 bg-yellow-500 rounded-md font-medium mb-4 ">
+                    {passwordHints.map((hint, index)=> {
+                        return(
+                            <li className="px-2 font-sm" key={index}>{hint}</li>
+                        );
+                    })}
+                </ul>
                 <button type="button" className="bg-red-700 px-5 py-3 rounded-md text-white font-semibold w-full" onClick={handleValidateForm}>
                     {isSignInForm ? 'Sign In' : 'Sign Up'}
                 </button>
